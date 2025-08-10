@@ -1,10 +1,15 @@
-# ANTI-CADDY CONFIGURATION
+[providers]
+nodejs = { version = "18" }
 
-[phases.setup]
-nixpkgs = ["nodejs-18"]
+[variables]
+NODE_ENV = "production"
+PORT = "3000"
+
+[phases.install]
+cmd = "npm ci"
 
 [phases.build]
-cmd = "npm ci && npm run build"
+cmd = "npm run build"
 
 [start]
 cmd = "npm run start"

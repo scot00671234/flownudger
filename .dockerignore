@@ -9,21 +9,40 @@ SETUP.md
 Dockerfile
 .dockerignore
 
-# ANTI-CADDY: Hide problematic files but keep essentials
-client/index.html
-client/dist/
+# COMPLETELY HIDE ALL STATIC ASSETS FROM NIXPACKS
+client/
+src/
+public/
+static/
+www/
+build/
 dist/public/
-*.config.js
-*.config.ts
+assets/
+attached_assets/
+
+# Hide all web files that trigger static detection
+*.html
+*.htm
+*.css
+*.js
+*.ts
+*.tsx
+*.jsx
+*.vue
+*.svelte
+*.astro
+
+# Hide all config files that suggest web framework
 vite.config.*
+webpack.config.*
+next.config.*
+nuxt.config.*
+astro.config.*
 tailwind.config.*
 postcss.config.*
-
-# Hide static detection triggers
-public/index.html
-build/index.html
-www/
-static/index.html
+*.config.js
+*.config.ts
+*.config.mjs
 
 # Ignore Caddy-related files to prevent detection
 **/Caddyfile
