@@ -1,0 +1,613 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flow - Smart Invoice Management | Join the Waitlist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563EB',
+                        secondary: '#1E40AF',
+                        accent: '#10B981',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                    }
+                }
+            }
+        };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans">
+
+    <!-- @COMPONENT: Header [navigation and branding] -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                        <i class="fas fa-stream text-white text-sm"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-slate-900">Flow</span>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#benefits" class="text-slate-600 hover:text-primary transition-colors">Benefits</a>
+                    <a href="#how-it-works" class="text-slate-600 hover:text-primary transition-colors">How it Works</a>
+                    <a href="#faq" class="text-slate-600 hover:text-primary transition-colors">FAQ</a>
+                </nav>
+                <button data-event="click:openWaitlistModal" class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary transition-colors font-medium">
+                    Join Waitlist
+                </button>
+            </div>
+        </div>
+    </header>
+    <!-- @END_COMPONENT: Header -->
+
+    <!-- @COMPONENT: Hero [main value proposition and CTA] -->
+    <section class="bg-gradient-to-br from-slate-50 to-blue-50 pt-16 pb-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
+                <div class="mb-12 lg:mb-0">
+                    <div class="mb-6">
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-primary">
+                            <i class="fas fa-rocket mr-2"></i>
+                            Coming Soon
+                        </span>
+                    </div>
+                    <h1 class="text-4xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
+                        Never chase invoices 
+                        <span class="text-primary">again</span>
+                    </h1>
+                    <p class="text-xl text-slate-600 mb-8 leading-relaxed">
+                        Flow automates your invoice follow-ups with intelligent nudges, helping you get paid faster while maintaining professional relationships with your clients.
+                    </p>
+                    
+                    <!-- @COMPONENT: WaitlistForm [email capture with validation] -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-200">
+                        <form class="flex flex-col sm:flex-row gap-4" data-event="submit:handleWaitlistSubmit">
+                            <div class="flex-1">
+                                <input 
+                                    type="email" 
+                                    placeholder="Enter your email address"
+                                    class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-colors"
+                                    data-bind="email"
+                                    data-mock="true"
+                                    required
+                                >
+                            </div>
+                            <button 
+                                type="submit"
+                                class="bg-primary text-white px-8 py-3 rounded-lg hover:bg-secondary transition-colors font-semibold whitespace-nowrap flex items-center justify-center"
+                                data-implementation="Should validate email and show loading state"
+                            >
+                                <span data-bind="buttonText">Join Waitlist</span>
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </form>
+                        <p class="text-sm text-slate-500 mt-3">
+                            <i class="fas fa-shield-alt mr-1"></i>
+                            No spam. Unsubscribe anytime. Get early access when we launch.
+                        </p>
+                    </div>
+                    <!-- @END_COMPONENT: WaitlistForm -->
+
+                    <div class="mt-8 flex items-center space-x-6 text-sm text-slate-600">
+                        <div class="flex items-center">
+                            <i class="fas fa-users text-accent mr-2"></i>
+                            <span><strong data-bind="waitlistCount" data-mock="true">2,847</strong> people waiting</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-clock text-accent mr-2"></i>
+                            <span>Launch in <strong>Q2 2024</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <!-- Professional business dashboard mockup -->
+                    <!-- A modern business dashboard showing invoice management interface -->
+                    <img 
+                        src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&h=800" 
+                        alt="Professional dashboard interface showing invoice management"
+                        class="rounded-2xl shadow-2xl"
+                        data-mock-image="true"
+                        data-implementation="Replace with actual Flow dashboard screenshot"
+                    >
+                    <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-lg border border-slate-200">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-3 h-3 bg-accent rounded-full animate-pulse"></div>
+                            <span class="text-sm font-medium text-slate-700">Auto-nudging active</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Hero -->
+
+    <!-- @COMPONENT: Benefits [key value propositions] -->
+    <section id="benefits" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
+                    Why thousands are joining our waitlist
+                </h2>
+                <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+                    Flow transforms how you manage invoices, turning a stressful process into an automated, professional experience.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- @MAP: benefits.map(benefit => ( -->
+                <div class="bg-slate-50 p-8 rounded-xl hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-bolt text-white text-lg"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-900 mb-4">Get Paid 3x Faster</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Our intelligent nudging system follows up on overdue invoices automatically, reducing payment time from 45 days to just 15 days on average.
+                    </p>
+                </div>
+
+                <div class="bg-slate-50 p-8 rounded-xl hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-accent rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-handshake text-white text-lg"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-900 mb-4">Maintain Relationships</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Professional, personalized communication that preserves client relationships while ensuring timely payments. No more awkward phone calls.
+                    </p>
+                </div>
+
+                <div class="bg-slate-50 p-8 rounded-xl hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-robot text-white text-lg"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-900 mb-4">100% Automated</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Set it once and forget it. Flow handles everything from gentle reminders to escalation sequences based on your preferences.
+                    </p>
+                </div>
+
+                <div class="bg-slate-50 p-8 rounded-xl hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-line text-white text-lg"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-900 mb-4">Improve Cash Flow</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Reduce outstanding receivables by up to 60% and improve your cash flow predictability with detailed payment tracking and analytics.
+                    </p>
+                </div>
+
+                <div class="bg-slate-50 p-8 rounded-xl hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-clock text-white text-lg"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-900 mb-4">Save 5+ Hours Weekly</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Stop manually tracking invoices and writing follow-up emails. Flow gives you back precious time to focus on growing your business.
+                    </p>
+                </div>
+
+                <div class="bg-slate-50 p-8 rounded-xl hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-red-500 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-alt text-white text-lg"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-900 mb-4">Reduce Bad Debt</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Early intervention prevents invoices from aging too long. Our data shows 40% reduction in write-offs for businesses using Flow.
+                    </p>
+                </div>
+                <!-- @END_MAP )) -->
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Benefits -->
+
+    <!-- @COMPONENT: HowItWorks [process explanation] -->
+    <section id="how-it-works" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
+                    How Flow works for you
+                </h2>
+                <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+                    Simple setup, powerful automation. Get started in minutes and see results immediately.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-12">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-white font-bold text-xl">1</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-900 mb-4">Connect Your Invoicing</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Integrate with your existing invoicing software (QuickBooks, FreshBooks, Xero) in under 2 minutes.
+                    </p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-white font-bold text-xl">2</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-900 mb-4">Set Your Preferences</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Customize your nudging schedule, tone, and escalation rules. We provide smart defaults that work for 90% of businesses.
+                    </p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-white font-bold text-xl">3</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-900 mb-4">Get Paid Faster</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Flow automatically sends professional reminders and tracks responses. Watch your payment times improve immediately.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: HowItWorks -->
+
+    <!-- @COMPONENT: SocialProof [testimonials and stats] -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
+                    Trusted by finance professionals
+                </h2>
+                <p class="text-xl text-slate-600">
+                    Join thousands of businesses already improving their cash flow
+                </p>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="grid md:grid-cols-4 gap-8 mb-16">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-primary mb-2" data-bind="stats.users" data-mock="true">2,847</div>
+                    <div class="text-slate-600">Businesses Waiting</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-accent mb-2">65%</div>
+                    <div class="text-slate-600">Faster Payments</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-blue-500 mb-2">$2.4M</div>
+                    <div class="text-slate-600">Recovered Revenue</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-purple-500 mb-2">15 Days</div>
+                    <div class="text-slate-600">Average Payment Time</div>
+                </div>
+            </div>
+
+            <!-- Testimonials -->
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- @MAP: testimonials.map(testimonial => ( -->
+                <div class="bg-slate-50 p-6 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-slate-700 mb-4 italic" data-mock="true">
+                        "Flow has completely transformed our accounts receivable process. We're getting paid 40% faster and I don't have to chase clients anymore."
+                    </p>
+                    <div class="flex items-center">
+                        <!-- Professional headshot of a business person -->
+                        <img 
+                            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&h=100" 
+                            alt="Professional headshot of Sarah Chen, CFO" 
+                            class="w-12 h-12 rounded-full mr-4"
+                            data-mock-image="true"
+                        >
+                        <div>
+                            <div class="font-semibold text-slate-900" data-mock="true">Sarah Chen</div>
+                            <div class="text-sm text-slate-600" data-mock="true">CFO, TechStart Inc</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 p-6 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-slate-700 mb-4 italic" data-mock="true">
+                        "The automation is incredible. What used to take me 2 hours every Friday now happens automatically. My clients love the professional approach."
+                    </p>
+                    <div class="flex items-center">
+                        <!-- Professional headshot of a business person -->
+                        <img 
+                            src="https://pixabay.com/get/g068092fde5b190a2ae065a277bf82efa3f603cd9eeb0e7731051d1e3590008072fd64b3ebf6c3b7670c82eaf69d35b36c80c9d3e1308b19533cf848b4a28000c_1280.jpg" 
+                            alt="Professional headshot of Maria Rodriguez, Business Owner" 
+                            class="w-12 h-12 rounded-full mr-4"
+                            data-mock-image="true"
+                        >
+                        <div>
+                            <div class="font-semibold text-slate-900" data-mock="true">Maria Rodriguez</div>
+                            <div class="text-sm text-slate-600" data-mock="true">Owner, Creative Studio</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 p-6 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-slate-700 mb-4 italic" data-mock="true">
+                        "Our cash flow has never been better. Flow reduced our average collection time from 45 days to just 18 days. Game changer."
+                    </p>
+                    <div class="flex items-center">
+                        <!-- Professional headshot of a business person -->
+                        <img 
+                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&h=100" 
+                            alt="Professional headshot of David Kim, Consultant" 
+                            class="w-12 h-12 rounded-full mr-4"
+                            data-mock-image="true"
+                        >
+                        <div>
+                            <div class="font-semibold text-slate-900" data-mock="true">David Kim</div>
+                            <div class="text-sm text-slate-600" data-mock="true">Independent Consultant</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- @END_MAP )) -->
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: SocialProof -->
+
+    <!-- @COMPONENT: FAQ [common questions] -->
+    <section id="faq" class="py-24 bg-slate-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
+                    Frequently asked questions
+                </h2>
+                <p class="text-xl text-slate-600">
+                    Everything you need to know about Flow
+                </p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- @MAP: faqs.map(faq => ( -->
+                <div class="bg-white rounded-lg border border-slate-200">
+                    <button 
+                        class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-slate-50 transition-colors"
+                        data-event="click:toggleFAQ"
+                        data-implementation="Should toggle FAQ content visibility"
+                    >
+                        <span class="font-semibold text-slate-900" data-mock="true">How does Flow integrate with my existing invoicing software?</span>
+                        <i class="fas fa-chevron-down text-slate-400"></i>
+                    </button>
+                    <div class="px-6 pb-4 text-slate-600 hidden" data-mock="true">
+                        Flow connects seamlessly with popular invoicing platforms like QuickBooks, FreshBooks, Xero, and more through secure API integrations. Setup takes less than 2 minutes.
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg border border-slate-200">
+                    <button 
+                        class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-slate-50 transition-colors"
+                        data-event="click:toggleFAQ"
+                    >
+                        <span class="font-semibold text-slate-900" data-mock="true">Will my clients know I'm using Flow?</span>
+                        <i class="fas fa-chevron-down text-slate-400"></i>
+                    </button>
+                    <div class="px-6 pb-4 text-slate-600 hidden" data-mock="true">
+                        No, all communications appear to come directly from you. Flow works behind the scenes to maintain your professional brand and client relationships.
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg border border-slate-200">
+                    <button 
+                        class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-slate-50 transition-colors"
+                        data-event="click:toggleFAQ"
+                    >
+                        <span class="font-semibold text-slate-900" data-mock="true">What happens if a client doesn't respond to the automated nudges?</span>
+                        <i class="fas fa-chevron-down text-slate-400"></i>
+                    </button>
+                    <div class="px-6 pb-4 text-slate-600 hidden" data-mock="true">
+                        Flow includes smart escalation sequences. After a set number of automated attempts, you'll be notified to handle the situation personally, ensuring nothing falls through the cracks.
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg border border-slate-200">
+                    <button 
+                        class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-slate-50 transition-colors"
+                        data-event="click:toggleFAQ"
+                    >
+                        <span class="font-semibold text-slate-900" data-mock="true">How much does Flow cost?</span>
+                        <i class="fas fa-chevron-down text-slate-400"></i>
+                    </button>
+                    <div class="px-6 pb-4 text-slate-600 hidden" data-mock="true">
+                        We're still finalizing our pricing, but it will be affordable for businesses of all sizes. Waitlist members will get early bird pricing with significant discounts.
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg border border-slate-200">
+                    <button 
+                        class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-slate-50 transition-colors"
+                        data-event="click:toggleFAQ"
+                    >
+                        <span class="font-semibold text-slate-900" data-mock="true">When will Flow be available?</span>
+                        <i class="fas fa-chevron-down text-slate-400"></i>
+                    </button>
+                    <div class="px-6 pb-4 text-slate-600 hidden" data-mock="true">
+                        We're planning to launch in Q2 2024. Waitlist members will get early access and exclusive onboarding support to ensure a smooth transition.
+                    </div>
+                </div>
+                <!-- @END_MAP )) -->
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: FAQ -->
+
+    <!-- @COMPONENT: FinalCTA [last chance conversion] -->
+    <section class="py-24 bg-primary">
+        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl lg:text-4xl font-bold text-white mb-4">
+                Ready to transform your invoice management?
+            </h2>
+            <p class="text-xl text-blue-100 mb-8">
+                Join thousands of businesses already on the waitlist. Get early access and exclusive launch pricing.
+            </p>
+            
+            <div class="bg-white p-6 rounded-xl max-w-md mx-auto">
+                <form class="space-y-4" data-event="submit:handleFinalCTASubmit">
+                    <input 
+                        type="email" 
+                        placeholder="Enter your email address"
+                        class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
+                        data-bind="finalEmail"
+                        data-mock="true"
+                        required
+                    >
+                    <button 
+                        type="submit"
+                        class="w-full bg-primary text-white py-3 rounded-lg hover:bg-secondary transition-colors font-semibold"
+                    >
+                        Get Early Access
+                    </button>
+                </form>
+                <p class="text-sm text-slate-500 mt-3">
+                    <i class="fas fa-gift mr-1"></i>
+                    Waitlist members get 50% off for the first 6 months
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: FinalCTA -->
+
+    <!-- @COMPONENT: Footer [contact and legal] -->
+    <footer class="bg-slate-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-2 mb-6">
+                        <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                            <i class="fas fa-stream text-white text-sm"></i>
+                        </div>
+                        <span class="text-2xl font-bold">Flow</span>
+                    </div>
+                    <p class="text-slate-300 mb-6 max-w-md">
+                        Smart invoice management that helps you get paid faster while maintaining professional client relationships.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-slate-400 hover:text-white transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-slate-400 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-slate-400 hover:text-white transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Product</h4>
+                    <ul class="space-y-2 text-slate-300">
+                        <li><a href="#benefits" class="hover:text-white transition-colors">Benefits</a></li>
+                        <li><a href="#how-it-works" class="hover:text-white transition-colors">How it Works</a></li>
+                        <li><a href="#faq" class="hover:text-white transition-colors">FAQ</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Pricing</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-slate-300">
+                        <li><a href="mailto:hello@flow.com" class="hover:text-white transition-colors">hello@flow.com</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800 mt-12 pt-8 text-center text-slate-400">
+                <p>&copy; 2024 Flow. All rights reserved. Built with ❤️ for businesses everywhere.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <script>
+        // Basic form handling and interactions
+        (function() {
+            // TODO: Implement proper form validation, API calls, and state management
+            
+            // Waitlist form submission
+            document.querySelectorAll('form').forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = this.querySelector('input[type="email"]').value;
+                    
+                    // Basic email validation
+                    if (!email || !email.includes('@')) {
+                        alert('Please enter a valid email address');
+                        return;
+                    }
+                    
+                    // Show success message (placeholder)
+                    alert('Thank you! You\'ve been added to the waitlist. We\'ll notify you when Flow launches.');
+                    this.reset();
+                });
+            });
+            
+            // FAQ toggle functionality
+            document.querySelectorAll('[data-event^="click:toggleFAQ"]').forEach(button => {
+                button.addEventListener('click', function() {
+                    const content = this.parentElement.querySelector('.hidden');
+                    const icon = this.querySelector('i');
+                    
+                    if (content) {
+                        content.classList.toggle('hidden');
+                        icon.classList.toggle('fa-chevron-down');
+                        icon.classList.toggle('fa-chevron-up');
+                    }
+                });
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
