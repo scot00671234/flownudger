@@ -1,9 +1,5 @@
-[providers]
-nodejs = { version = "18" }
-
-[variables]
-NODE_ENV = "production"
-PORT = "3000"
+[phases.setup]
+nixpkgs = ["nodejs-18"]
 
 [phases.install]
 cmd = "npm ci"
@@ -13,3 +9,7 @@ cmd = "npm run build"
 
 [start]
 cmd = "npm run start"
+
+[variables]
+NODE_ENV = "production"
+PORT = "3000"
