@@ -12,10 +12,10 @@ PORT=3000
 ```
 
 ## Key Files for VPS Deployment
-- `nixpacks.toml` - **Explicitly prevents Caddy usage**
-- `Procfile` - Backup process definition
-- `Dockerfile` - Alternative Docker deployment
-- `.no-caddy` - Signal file to prevent static detection
+- `nixpacks.toml` - **Minimal configuration to prevent Caddy detection**
+- `Procfile` - Backup process definition  
+- `Dockerfile` - **RECOMMENDED: Direct Docker deployment (bypasses Nixpacks)**
+- `.dockerignore` - Hides static files from detection
 
 ## Deployment Architecture
 - **Single Node.js process** serves everything
@@ -25,11 +25,27 @@ PORT=3000
 
 ## Troubleshooting VPS Issues
 
-### "Is a directory" Error
-This occurs when Nixpacks tries to use Caddy. Solutions:
-1. Use the simplified `nixpacks.toml` (no providers section)
-2. Ensure build completes with `npm run build`
-3. Set environment variables: `NODE_ENV=production PORT=3000`
+### "Is a directory" / Caddy Errors
+The core issue is Nixpacks auto-detecting static files and adding Caddy. Solutions:
+
+**CRITICAL FIX**: Use the minimal `nixpacks.toml` with no provider detection:
+```toml
+[build]
+
+[phases.build]
+cmd = "npm ci && npm run build"
+
+[start]
+cmd = "npm run start"
+```
+
+**Alternative**: Use the Dockerfile instead of Nixpacks for deployment:
+```bash
+# In Dokploy, select "Docker" instead of "Nixpacks" as build method
+# The Dockerfile is already configured for production deployment
+```
+
+**Required Environment Variables**: `NODE_ENV=production PORT=3000`
 
 ### Container Not Found Errors
 1. Check Dokploy logs for build completion

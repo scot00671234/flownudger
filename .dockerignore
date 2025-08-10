@@ -5,11 +5,19 @@ node_modules
 README.md
 SETUP.md
 .local
-dist
-client/dist
 *.md
 Dockerfile
 .dockerignore
+
+# CRITICAL: Hide ALL static files from Nixpacks detection
+*.html
+public/
+static/
+www/
+build/
+dist/public/
+client/dist/
+client/build/
 
 # Ignore Caddy-related files to prevent detection
 **/Caddyfile
@@ -21,3 +29,5 @@ Caddy
 .vscode
 .idea
 *.log
+dist/
+client/dist/

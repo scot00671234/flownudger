@@ -1,0 +1,19 @@
+{
+  "name": "flow-invoice-nudger",
+  "description": "Flow Invoice Nudger - Node.js Express Application",
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "FREE"
+    }
+  },
+  "env": {
+    "NODE_ENV": "production",
+    "PORT": "3000"
+  }
+}

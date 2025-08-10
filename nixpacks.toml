@@ -1,11 +1,7 @@
-[phases.setup]
-nixpkgs = ["nodejs-18"]
-
-[phases.install]
-cmd = "npm ci"
+[build]
 
 [phases.build]
-cmd = "npm run build"
+cmd = "npm ci && npm run build"
 
 [start]
 cmd = "npm run start"
