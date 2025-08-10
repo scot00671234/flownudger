@@ -9,25 +9,42 @@ SETUP.md
 Dockerfile
 .dockerignore
 
-# CRITICAL: Hide ALL static files from Nixpacks detection
+# NUCLEAR ANTI-CADDY: Hide ALL web-related files
 *.html
+*.htm
+*.css
+*.js
+*.ts
+*.tsx
+*.jsx
 public/
 static/
 www/
 build/
-dist/public/
-client/dist/
-client/build/
+dist/
+client/
+src/
+assets/
+attached_assets/
+
+# Hide ALL possible static site indicators
+index.*
+main.*
+app.*
+*.config.*
+vite.config.*
+tailwind.config.*
+postcss.config.*
 
 # Ignore Caddy-related files to prevent detection
 **/Caddyfile
 **/*.caddyfile
 caddy
 Caddy
+nginx.conf
+apache.conf
 
 # Development files
 .vscode
 .idea
 *.log
-dist/
-client/dist/

@@ -5,6 +5,8 @@ This is a full-stack waitlist application built with React, Express.js, and Post
 # User Preferences
 
 Preferred communication style: Simple, everyday language.
+Deployment preference: Strongly prefers working VPS deployment, frustrated with Caddy auto-detection issues.
+Priority: Get VPS deployment working at all costs - bypass Nixpacks if necessary.
 
 # System Architecture
 

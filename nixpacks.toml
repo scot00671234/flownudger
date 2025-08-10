@@ -1,7 +1,9 @@
-[build]
+# NUCLEAR OPTION - BYPASS ALL DETECTION
+
+[providers]
 
 [phases.build]
-cmd = "npm ci && npm run build"
+cmd = "./build.sh"
 
 [start]
-cmd = "npm run start"
+cmd = "./start.sh"

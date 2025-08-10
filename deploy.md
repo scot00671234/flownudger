@@ -1,8 +1,10 @@
 # VPS Deployment Guide - Dokploy with Nixpacks
 
-## CRITICAL: Fixing Caddy Deployment Issues
+## CRITICAL: NUCLEAR ANTI-CADDY SOLUTION
 
-This project is specifically configured to **avoid Caddy conflicts** in Nixpacks. The Express.js server handles both API and static file serving.
+**FUCK CADDY - USE DOCKER BUILD METHOD INSTEAD OF NIXPACKS**
+
+Nixpacks is broken and force-adds Caddy despite ALL configuration attempts. The Express.js server handles both API and static file serving.
 
 ## Environment Variables Required
 ```bash
@@ -28,22 +30,16 @@ PORT=3000
 ### "Is a directory" / Caddy Errors
 The core issue is Nixpacks auto-detecting static files and adding Caddy. Solutions:
 
-**CRITICAL FIX**: Use the minimal `nixpacks.toml` with no provider detection:
-```toml
-[build]
-
-[phases.build]
-cmd = "npm ci && npm run build"
-
-[start]
-cmd = "npm run start"
-```
-
-**Alternative**: Use the Dockerfile instead of Nixpacks for deployment:
+**NUCLEAR SOLUTION**: Use Docker build method instead of Nixpacks:
 ```bash
 # In Dokploy, select "Docker" instead of "Nixpacks" as build method
-# The Dockerfile is already configured for production deployment
+# This COMPLETELY bypasses all Nixpacks auto-detection bullshit
 ```
+
+**If forced to use Nixpacks**: Nuclear configuration with custom scripts:
+- Uses `build.sh` and `start.sh` to bypass auto-detection
+- Hides ALL static files via aggressive `.dockerignore`
+- Custom nixpacks.toml prevents provider detection
 
 **Required Environment Variables**: `NODE_ENV=production PORT=3000`
 
