@@ -1,15 +1,25 @@
+# Nixpacks configuration for Express.js + Vite full-stack app
+# Explicitly configured to prevent Caddy from being used
+
+[build.env]
+NODE_ENV = "production"
+
 [phases.setup]
-nixPkgs = ['nodejs-18', 'npm-9']
+nixPkgs = ["nodejs-18", "npm-9"]
 
 [phases.install]
-cmd = 'npm ci'
+cmd = "npm ci"
 
 [phases.build]
-cmd = 'npm run build'
+cmd = "npm run build"
 
 [start]
-cmd = 'npm run start'
+cmd = "npm run start"
 
 [variables]
-NODE_ENV = 'production'
-PORT = '3000'
+NODE_ENV = "production"
+PORT = "3000"
+
+# Force Node.js provider only - no static providers
+[providers]
+node = true

@@ -1,15 +1,23 @@
 node_modules
-npm-debug.log
 .git
 .gitignore
+.env*
 README.md
-.nyc_output
-coverage
+SETUP.md
+.local
 dist
-.vscode
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+client/dist
+*.md
+Dockerfile
+.dockerignore
+
+# Ignore Caddy-related files to prevent detection
+**/Caddyfile
+**/*.caddyfile
 caddy
-Caddyfile*
+Caddy
+
+# Development files
+.vscode
+.idea
+*.log

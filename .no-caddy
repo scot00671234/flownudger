@@ -1,0 +1,2 @@
+# This file signals to Nixpacks that this is NOT a static site
+# and should not use Caddy as a web server

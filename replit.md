@@ -81,3 +81,24 @@ Preferred communication style: Simple, everyday language.
 - **Date-fns**: Modern JavaScript date utility library
 - **Class Variance Authority**: Utility for creating variant-based component APIs
 - **CLSX & Tailwind Merge**: Conditional className utilities for dynamic styling
+
+# Deployment Configuration
+
+## VPS Deployment (Dokploy + Nixpacks)
+- **Anti-Caddy Configuration**: Explicit Nixpacks settings to prevent Caddy conflicts
+- **Single Process Architecture**: Express.js serves both API and static files
+- **Port Configuration**: Flexible PORT environment variable (defaults to 5000 for Replit, 3000 for VPS)
+- **Database Integration**: PostgreSQL with environment-based connection strings
+
+## Deployment Files
+- `nixpacks.toml` - Prevents Caddy detection, forces Node.js-only deployment
+- `Procfile` - Backup process definition for container platforms
+- `Dockerfile` - Multi-stage production build with security best practices
+- `.dockerignore` - Excludes development files and prevents Caddy detection
+- `.no-caddy` - Signal file to prevent static site detection by Nixpacks
+
+## Security & Production Features
+- **Environment Separation**: Different configurations for development vs production
+- **Static File Serving**: Production mode serves built React app from Express
+- **Database Migrations**: Automated schema deployment with Drizzle ORM
+- **Error Handling**: Centralized error middleware with proper HTTP status codes

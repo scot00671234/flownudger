@@ -1,11 +1,2 @@
-[phases.setup]
-nixPkgs = ['nodejs-18', 'npm-9']
-
-[phases.install]
-cmd = 'npm ci'
-
-[phases.build]
-cmd = 'npm run build'
-
-[start]
-cmd = 'npm run start'
+# This file forces Nixpacks to skip automatic detection
+# and use our explicit configuration in nixpacks.toml

@@ -1,9 +1,8 @@
-# Deployment Guide for Flow Waitlist App
+# VPS Deployment Guide - Dokploy with Nixpacks
 
-## Prerequisites
-- VPS with Docker support
-- Dokploy installed
-- PostgreSQL database
+## CRITICAL: Fixing Caddy Deployment Issues
+
+This project is specifically configured to **avoid Caddy conflicts** in Nixpacks. The Express.js server handles both API and static file serving.
 
 ## Environment Variables Required
 ```bash
@@ -12,35 +11,47 @@ NODE_ENV=production
 PORT=3000
 ```
 
-## Deployment Steps
+## Key Files for VPS Deployment
+- `nixpacks.toml` - **Explicitly prevents Caddy usage**
+- `Procfile` - Backup process definition
+- `Dockerfile` - Alternative Docker deployment
+- `.no-caddy` - Signal file to prevent static detection
 
-1. **Clone the repository** to your VPS
-2. **Set environment variables** in Dokploy
-3. **Configure PostgreSQL** database connection
-4. **Deploy** using Nixpacks (Dockerfile and nixpacks.toml included)
+## Deployment Architecture
+- **Single Node.js process** serves everything
+- **No reverse proxy needed** (Caddy, Nginx, etc.)
+- **Express.js** handles both API routes and static file serving
+- **Built files** served directly from `/client/dist`
 
-## Database Setup
-The app uses PostgreSQL with the following tables:
-- `users` - Basic user authentication (for future use)
-- `waitlist_signups` - Email addresses with timestamps
+## Troubleshooting VPS Issues
 
-## Admin Access
-- Visit `/admin` to view all waitlist signups
-- API endpoint: `/api/admin/waitlist` returns JSON with all signups
+### "Is a directory" Error
+This occurs when Nixpacks tries to use Caddy. Solutions:
+1. Ensure `nixpacks.toml` has `[providers] node = true`
+2. Verify `.no-caddy` file exists
+3. Use `NODE_ENV=production PORT=3000` environment variables
+
+### Container Not Found Errors
+1. Check Dokploy logs for build completion
+2. Verify `npm run build` completes successfully
+3. Ensure `npm run start` command works
+
+## Database Setup Commands
+```bash
+# After deployment, run migrations
+npm run db:push
+```
 
 ## API Endpoints
 - `POST /api/waitlist` - Add email to waitlist
-- `GET /api/waitlist/count` - Get total signup count
-- `GET /api/admin/waitlist` - Get all signups (admin)
+- `GET /api/waitlist/count` - Get total signup count  
+- `GET /api/admin/waitlist` - Get all signups (admin view)
 
-## File Structure
-- `server/` - Express.js backend
-- `client/` - React frontend  
-- `shared/` - Shared types and schemas
-- `Dockerfile` - Production Docker configuration
-- `nixpacks.toml` - Nixpacks build configuration
+## Admin Access
+Visit `/admin` to view waitlist analytics and all signups.
 
-## Notes
-- Caddy is ignored via `.dockerignore`
-- Database migrations handled by Drizzle ORM
-- Production build serves static files from Express
+## Architecture Notes
+- **Full-stack in one process**: No microservices needed
+- **Static files**: Bundled and served by Express in production
+- **Database**: PostgreSQL with Drizzle ORM migrations
+- **Security**: Input validation with Zod schemas
