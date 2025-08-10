@@ -11,7 +11,7 @@ nixPkgs = ["nodejs-18_x"]
 cmd = "npm ci"
 
 [phases.build]
-cmd = "npm run build && rm -rf dist/public"
+cmd = "npm run build"
 
 [start]
 cmd = "npm start"

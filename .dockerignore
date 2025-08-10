@@ -3,26 +3,34 @@ node_modules/
 .env
 *.log
 
-# NUCLEAR ANTI-CADDY - HIDE ALL FRONTEND FILES FROM NIXPACKS
+# Allow build-essential files
+!client/
+!server/
+!shared/
+!package.json
+!package-lock.json
+!tsconfig.json
+!vite.config.ts
+!tailwind.config.ts
+!postcss.config.js
+!components.json
+
+# Hide output directories to prevent Caddy detection
 dist/public/
 build/
 public/
 static/
 www/
 assets/
-client/
-src/
-*.html
-*.css
-*.js
-*.jsx
-*.tsx
-index.html
+attached_assets/
+
+# Hide Caddy-related files
 Caddyfile
 .caddy
 caddy.json
-vite.config.*
-tailwind.config.*
-postcss.config.*
-components.json
+nginx.conf
+apache.conf
+
+# Hide docs that might suggest static site
 README.md
+*.md
