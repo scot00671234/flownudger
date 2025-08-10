@@ -5,10 +5,11 @@
 **Status**: Production server tested and running successfully on port 3000
 
 ### 🎯 ROOT CAUSE ANALYSIS
-The `import.meta.dirname` from vite.config.ts was being bundled by esbuild but Node.js doesn't support this in ES modules, causing:
+Multiple `import.meta.dirname` references from vite.config.ts and server/vite.ts were being bundled by esbuild but Node.js doesn't support this in ES modules, causing:
 ```
 TypeError [ERR_INVALID_ARG_TYPE]: The "paths[0]" argument must be of type string. Received undefined
 ```
+This occurred because vite.config.ts and server/vite.ts both use import.meta.dirname for path resolution, and esbuild bundles these into the production build where Node.js expects __dirname instead.
 
 ### 🔧 COMPREHENSIVE SOLUTION
 
@@ -27,7 +28,7 @@ nixPkgs = ["nodejs-18_x"]
 cmd = "npm ci"
 
 [phases.build]
-cmd = "npm run build && cd dist && sed 's/import\\.meta\\.dirname/__dirname/g' index.js > index.js.tmp && mv index.js.tmp index.js"
+cmd = "npm run build && cd dist && sed -i 's/import\\.meta\\.dirname/__dirname/g' index.js && sed -i '1i\\// Define __dirname for ES modules\nimport { fileURLToPath } from \"url\";\nimport { dirname } from \"path\";\nconst __filename = fileURLToPath(import.meta.url);\nconst __dirname = dirname(__filename);\n' index.js"
 
 [start]
 cmd = "npm start"

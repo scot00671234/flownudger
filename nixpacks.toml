@@ -11,7 +11,7 @@ nixPkgs = ["nodejs-18_x"]
 cmd = "npm ci"
 
 [phases.build]
-cmd = "npm run build && cd dist && sed 's/import\\.meta\\.dirname/__dirname/g' index.js > index.js.tmp && mv index.js.tmp index.js"
+cmd = "npm run build && cd dist && sed -i 's/import\\.meta\\.dirname/__dirname/g' index.js && sed -i '1i\\// Define __dirname for ES modules\nimport { fileURLToPath } from \"url\";\nimport { dirname } from \"path\";\nconst __filename = fileURLToPath(import.meta.url);\nconst __dirname = dirname(__filename);\n' index.js"
 
 [start]
 cmd = "npm start"
