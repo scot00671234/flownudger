@@ -11,7 +11,7 @@ nixPkgs = ["nodejs-18_x"]
 cmd = "npm ci"
 
 [phases.build]
-cmd = "npm run build"
+cmd = "npm run build && cd dist && sed 's/import\\.meta\\.dirname/__dirname/g' index.js > index.js.tmp && mv index.js.tmp index.js"
 
 [start]
 cmd = "npm start"
