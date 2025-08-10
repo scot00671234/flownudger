@@ -1,9 +1,10 @@
-# NUCLEAR OPTION - BYPASS ALL DETECTION
+# ANTI-CADDY CONFIGURATION
 
-[providers]
+[phases.setup]
+nixpkgs = ["nodejs-18"]
 
 [phases.build]
-cmd = "./build.sh"
+cmd = "npm ci && npm run build"
 
 [start]
-cmd = "./start.sh"
+cmd = "npm run start"

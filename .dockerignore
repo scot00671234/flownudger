@@ -9,32 +9,21 @@ SETUP.md
 Dockerfile
 .dockerignore
 
-# NUCLEAR ANTI-CADDY: Hide ALL web-related files
-*.html
-*.htm
-*.css
-*.js
-*.ts
-*.tsx
-*.jsx
-public/
-static/
-www/
-build/
-dist/
-client/
-src/
-assets/
-attached_assets/
-
-# Hide ALL possible static site indicators
-index.*
-main.*
-app.*
-*.config.*
+# ANTI-CADDY: Hide problematic files but keep essentials
+client/index.html
+client/dist/
+dist/public/
+*.config.js
+*.config.ts
 vite.config.*
 tailwind.config.*
 postcss.config.*
+
+# Hide static detection triggers
+public/index.html
+build/index.html
+www/
+static/index.html
 
 # Ignore Caddy-related files to prevent detection
 **/Caddyfile
