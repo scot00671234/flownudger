@@ -1,6 +1,17 @@
 node_modules
 dist
+client/dist
+.env
+.env.local
+.env.production
+.env.development
+*.log
 .DS_Store
-server/public
-vite.config.ts.*
-*.tar.gz
+.vscode
+.idea
+
+# Deployment files that might cause confusion
+.caddy*
+Caddyfile*
+caddy.json
+nginx.conf

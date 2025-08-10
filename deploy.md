@@ -27,9 +27,9 @@ PORT=3000
 
 ### "Is a directory" Error
 This occurs when Nixpacks tries to use Caddy. Solutions:
-1. Ensure `nixpacks.toml` has `[providers] node = true`
-2. Verify `.no-caddy` file exists
-3. Use `NODE_ENV=production PORT=3000` environment variables
+1. Use the simplified `nixpacks.toml` (no providers section)
+2. Ensure build completes with `npm run build`
+3. Set environment variables: `NODE_ENV=production PORT=3000`
 
 ### Container Not Found Errors
 1. Check Dokploy logs for build completion

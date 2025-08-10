@@ -1,2 +1,0 @@
-# This file forces Nixpacks to skip automatic detection
-# and use our explicit configuration in nixpacks.toml
