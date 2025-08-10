@@ -1,0 +1,75 @@
+nitializing deployment
+Clonning Repo github.com/scot00671234/flownudger.git to /etc/dokploy/applications/flow-invoice-nudger-app-gum1ta/code: ✅
+Cloning into '/etc/dokploy/applications/flow-invoice-nudger-app-gum1ta/code'...
+remote: Enumerating objects: 141, done.
+Cloned github.com/scot00671234/flownudger.git: ✅
+Build nixpacks: ✅
+Source Type: github: ✅
+╔═════════════════════ Nixpacks v1.39.0 ═════════════════════╗
+║ setup      │ nodejs_18, npm-9_x, openssl                   ║
+║────────────────────────────────────────────────────────────║
+║ caddy      │ pkgs: caddy                                   ║
+║            │ cmds: caddy fmt --overwrite /assets/Caddyfile ║
+║────────────────────────────────────────────────────────────║
+║ install    │ npm ci                                        ║
+║────────────────────────────────────────────────────────────║
+║ build      │ npm run build                                 ║
+║────────────────────────────────────────────────────────────║
+║ start      │ npm start                                     ║
+╚════════════════════════════════════════════════════════════╝
+#0 building with "default" instance using docker driver
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.68kB done
+#1 DONE 0.0s
+#2 [internal] load metadata for ghcr.io/railwayapp/nixpacks:ubuntu-1745885067
+#2 DONE 0.3s
+#3 [internal] load .dockerignore
+#3 transferring context: 731B done
+#3 DONE 0.0s
+#4 [stage-0  1/15] FROM ghcr.io/railwayapp/nixpacks:ubuntu-1745885067@sha256:d45c89d80e13d7ad0fd555b5130f22a866d9dd10e861f589932303ef2314c7de
+#4 DONE 0.0s
+#5 [internal] load build context
+#5 transferring context: 327.32kB 0.0s done
+#5 DONE 0.0s
+#6 [stage-0  2/15] WORKDIR /app/
+#6 CACHED
+#7 [stage-0  6/15] RUN nix-env -if .nixpacks/nixpkgs-ffeebf0acf3ae8b29f8c7049cd911b9636efd7e7.nix && nix-collect-garbage -d
+#7 CACHED
+#8 [stage-0  3/15] COPY .nixpacks/nixpkgs-ba913eda2df8eb72147259189d55932012df6301.nix .nixpacks/nixpkgs-ba913eda2df8eb72147259189d55932012df6301.nix
+#8 CACHED
+#9 [stage-0  4/15] RUN nix-env -if .nixpacks/nixpkgs-ba913eda2df8eb72147259189d55932012df6301.nix && nix-collect-garbage -d
+#9 CACHED
+#10 [stage-0  5/15] COPY .nixpacks/nixpkgs-ffeebf0acf3ae8b29f8c7049cd911b9636efd7e7.nix .nixpacks/nixpkgs-ffeebf0acf3ae8b29f8c7049cd911b9636efd7e7.nix
+#10 CACHED
+#11 [stage-0  7/15] COPY .nixpacks/assets /assets/
+#11 CACHED
+#12 [stage-0  8/15] COPY . /app/.
+#12 DONE 0.1s
+#13 [stage-0  9/15] RUN  caddy fmt --overwrite /assets/Caddyfile
+#13 0.217 Error: reading input file: open /assets/Caddyfile: no such file or directory
+#13 ERROR: process "/bin/bash -ol pipefail -c caddy fmt --overwrite /assets/Caddyfile" did not complete successfully: exit code: 1
+------
+> [stage-0  9/15] RUN  caddy fmt --overwrite /assets/Caddyfile:
+0.217 Error: reading input file: open /assets/Caddyfile: no such file or directory
+------
+7 warnings found (use docker --debug to expand):
+ - SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data (ARG "SESSION_SECRET") (line 13)
+- SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data (ARG "STRIPE_SECRET_KEY") (line 13)
+- SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data (ARG "STRIPE_WEBHOOK_SECRET") (line 13)
+- SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data (ENV "SESSION_SECRET") (line 14)
+- SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data (ENV "STRIPE_SECRET_KEY") (line 14)
+- SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data (ENV "STRIPE_WEBHOOK_SECRET") (line 14)
+- UndefinedVar: Usage of undefined variable '$NIXPACKS_PATH' (line 24)
+Dockerfile:21
+--------------------
+|     # caddy phase
+|     COPY . /app/.
+| >>> RUN  caddy fmt --overwrite /assets/Caddyfile
+|
+|     # install phase
+--------------------
+ERROR: failed to solve: process "/bin/bash -ol pipefail -c caddy fmt --overwrite /assets/Caddyfile" did not complete successfully: exit code: 1
+Error: Docker build failed
+Error response from daemon: No such container: flow-invoice-nudger-app-gum1ta-s6RI_rdD4B
+Error ❌
+Error response from daemon: No such container: flow-invoice-nudger-app-gum1ta-s6RI_rdD4B

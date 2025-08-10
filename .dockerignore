@@ -1,58 +1,28 @@
-node_modules
-.git
-.gitignore
-.env*
-README.md
-SETUP.md
-.local
-*.md
-Dockerfile
-.dockerignore
+node_modules/
+.git/
+.env
+*.log
 
-# COMPLETELY HIDE ALL STATIC ASSETS FROM NIXPACKS
-client/
-src/
+# NUCLEAR ANTI-CADDY - HIDE ALL FRONTEND FILES FROM NIXPACKS
+dist/public/
+build/
 public/
 static/
 www/
-build/
-dist/public/
 assets/
-attached_assets/
-
-# Hide all web files that trigger static detection
+client/
+src/
 *.html
-*.htm
 *.css
 *.js
-*.ts
-*.tsx
 *.jsx
-*.vue
-*.svelte
-*.astro
-
-# Hide all config files that suggest web framework
+*.tsx
+index.html
+Caddyfile
+.caddy
+caddy.json
 vite.config.*
-webpack.config.*
-next.config.*
-nuxt.config.*
-astro.config.*
 tailwind.config.*
 postcss.config.*
-*.config.js
-*.config.ts
-*.config.mjs
-
-# Ignore Caddy-related files to prevent detection
-**/Caddyfile
-**/*.caddyfile
-caddy
-Caddy
-nginx.conf
-apache.conf
-
-# Development files
-.vscode
-.idea
-*.log
+components.json
+README.md
