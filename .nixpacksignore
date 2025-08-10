@@ -1,0 +1,14 @@
+client/
+src/
+public/
+static/
+www/
+*.html
+*.css
+*.js
+*.ts
+*.jsx
+*.tsx
+dist/public/
+build/
+assets/

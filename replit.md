@@ -5,8 +5,9 @@ This is a full-stack waitlist application built with React, Express.js, and Post
 # User Preferences
 
 Preferred communication style: Simple, everyday language.
-Deployment preference: Strongly prefers working VPS deployment, frustrated with Caddy auto-detection issues.
-Priority: Get VPS deployment working at all costs - bypass Nixpacks if necessary.
+Deployment preference: Strongly prefers working VPS deployment, extremely frustrated with Caddy auto-detection issues.
+Priority: Get VPS deployment working at all costs - Nixpacks is fundamentally broken and must be bypassed.
+Solution: Use Docker build method in Dokploy instead of Nixpacks to completely avoid auto-detection issues.
 
 # System Architecture
 

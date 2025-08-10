@@ -1,15 +1,13 @@
-[phases.setup]
-nixpkgs = ["nodejs-18"]
-
-[phases.install]
-cmd = "npm ci"
-
-[phases.build]
-cmd = "npm run build"
-
-[start]
-cmd = "npm run start"
-
 [variables]
+NIXPACKS_NO_CACHE = "1"
 NODE_ENV = "production"
 PORT = "3000"
+
+[providers]
+node = "18"
+
+[build]
+cmd = "npm ci && npm run build"
+
+[start]
+cmd = "npm start"
