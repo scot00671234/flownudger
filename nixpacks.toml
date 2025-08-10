@@ -1,13 +1,15 @@
+providers = ["node"]
+
 [variables]
-NIXPACKS_NO_CACHE = "1"
 NODE_ENV = "production"
 PORT = "3000"
+NIXPACKS_NODE_VERSION = "18"
 
-[providers]
-node = "18"
+[phases.install]
+cmd = "npm ci"
 
-[build]
-cmd = "npm ci && npm run build"
+[phases.build]
+cmd = "npm run build"
 
 [start]
 cmd = "npm start"
